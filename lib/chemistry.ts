@@ -19,9 +19,9 @@ export const modules = [
 export const foundationPoints: SpecPoint[] = [
   { code: "2.1.1", title: "Atomic structure", summary: "Atoms, ions, isotopes and the particles inside them.", mastery: 78, href: "/chemistry/ocr-a/2-1-1", status: "active" },
   { code: "2.1.2", title: "Formulae and equations", summary: "Chemical formulae, balanced equations and ionic equations.", mastery: 44, href: "/chemistry/ocr-a/2-1-2", status: "active" },
-  { code: "2.1.3", title: "Amount of substance", summary: "Moles, masses and reacting quantities.", mastery: 21, status: "placeholder" },
-  { code: "2.1.4", title: "Acids", summary: "Acids, bases, neutralisation and titration ideas.", mastery: 0, status: "placeholder" },
-  { code: "2.1.5", title: "Redox", summary: "Oxidation numbers and electron transfer.", mastery: 0, status: "placeholder" },
+  { code: "2.1.3", title: "Amount of substance", summary: "Moles, masses and reacting quantities.", mastery: 21, href: "/chemistry/ocr-a/2-1-3", status: "placeholder" },
+  { code: "2.1.4", title: "Acids", summary: "Acids, bases, neutralisation and titration ideas.", mastery: 0, href: "/chemistry/ocr-a/2-1-4", status: "placeholder" },
+  { code: "2.1.5", title: "Redox", summary: "Oxidation numbers and electron transfer.", mastery: 0, href: "/chemistry/ocr-a/2-1-5", status: "placeholder" },
 ];
 
 export const spec211 = {
