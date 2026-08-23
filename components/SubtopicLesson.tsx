@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { ArrowLeft, ArrowRight, Beaker, BookOpen, Brain, CheckCircle2, ChevronRight, FilePenLine, Lightbulb, Target, TriangleAlert } from "lucide-react";
+import { ArrowLeft, ArrowRight, Beaker, BookOpen, Brain, CheckCircle2, ChevronRight, FilePenLine, Lightbulb, Target } from "lucide-react";
 import type { Module2Subpoint, Module2Topic } from "@/lib/module2TopicData";
 
 const tabs = ["Learn", "Recall", "Practise", "Exam", "Master"] as const;
@@ -32,17 +32,17 @@ export function SubtopicLesson({ topic, point }: { topic: Module2Topic; point: M
         </header>
 
         <section className="spec-wording" style={{marginBottom:21}}>
-          <div className="spec-label">From your specification map</div>
+          <div className="spec-label">Specification focus</div>
           <p>{point.sourceTitle}</p>
         </section>
 
         <div className="study-tabs">{tabs.map(t => <button key={t} onClick={()=>setTab(t)} className={tab===t?'study-tab active':'study-tab'}>{t}</button>)}</div>
 
         {tab === 'Learn' && <Learn point={point}/>} 
-        {tab === 'Recall' && <PrototypePanel icon={<Brain size={23}/>} kicker="Recall" title="Recall will sit under this exact section" text={`Flashcards for “${point.friendlyTitle}” will live here, rather than being mixed with every other ${topic.title.toLowerCase()} card.`}/>} 
-        {tab === 'Practise' && <PrototypePanel icon={<FilePenLine size={23}/>} kicker="Practise" title="Practice stays tied to the section" text="This will eventually hold short questions, calculations and worksheet-style sets tagged specifically to this specification point."/>}
-        {tab === 'Exam' && <PrototypePanel icon={<Target size={23}/>} kicker="Exam questions" title="Then apply only this idea to exam questions" text="Past-paper and Avero-written questions can be filtered to this section, with marks, walkthroughs and examiner-language feedback."/>}
-        {tab === 'Master' && <PrototypePanel icon={<CheckCircle2 size={23}/>} kicker="Master" title="One mastery score for this section" text="A short check can decide whether this individual specification point is secure. The parent topic can then combine the scores from all its sections."/>}
+        {tab === 'Recall' && <StudyPanel icon={<Brain size={23}/>} kicker="Recall" title="Test what you can remember" text={`Use quick retrieval prompts to check whether you can explain ${point.friendlyTitle.toLowerCase()} without relying on your notes.`}/>} 
+        {tab === 'Practise' && <StudyPanel icon={<FilePenLine size={23}/>} kicker="Practise" title="Build confidence with focused questions" text="Work through short questions and calculations that target this section before moving on to longer exam-style problems."/>}
+        {tab === 'Exam' && <StudyPanel icon={<Target size={23}/>} kicker="Exam questions" title="Apply this idea under exam conditions" text="Use exam-style questions to practise choosing the right chemistry, showing clear working and using precise scientific language."/>}
+        {tab === 'Master' && <StudyPanel icon={<CheckCircle2 size={23}/>} kicker="Master" title="Check that this section is secure" text="Use a short mastery check to identify any remaining gaps before you move on to the next section."/>}
 
         <div className="prev-next" style={{marginTop:28}}>
           {previous ? <Link href={`${base}/${previous.id}`} className="secondary-button"><ArrowLeft size={17}/> Previous section</Link> : <Link href={base} className="secondary-button"><ArrowLeft size={17}/> Topic overview</Link>}
@@ -72,7 +72,7 @@ function Learn({ point }: { point: Module2Subpoint }) {
   return <div style={{display:'grid',gap:15}}>
     <section className="content-card" style={{padding:25,background:'#f5f3ff',display:'grid',gridTemplateColumns:'46px minmax(0,1fr)',gap:15,alignItems:'start'}}>
       <div className="section-icon lavender"><BookOpen size={21}/></div>
-      <div><span className="content-kicker">The key idea</span><h2 style={{fontSize:23,margin:'5px 0 8px'}}>{point.keyIdea}</h2><p style={{margin:0,fontSize:14}}>Get this idea clear first. The detail underneath will make much more sense once you know what the section is really about.</p></div>
+      <div><span className="content-kicker">The key idea</span><h2 style={{fontSize:23,margin:'5px 0 8px'}}>{point.keyIdea}</h2><p style={{margin:0,fontSize:14}}>Start here. Once this idea is clear, the detail underneath becomes much easier to connect and remember.</p></div>
     </section>
 
     <section style={{display:'grid',gridTemplateColumns:'minmax(0,1.15fr) minmax(270px,.85fr)',gap:15,alignItems:'stretch'}}>
@@ -113,6 +113,6 @@ function TopicVisual({ type }: { type: Module2Subpoint['visual'] }) {
   return <div style={box}><span className="content-kicker">Calculation route</span><h3>Known → ratio → unknown</h3><div style={{display:'grid',gap:9,margin:'auto 0'}}>{node('known c + V')}{node('calculate moles','#eaf9f5')}{node('use equation ratio','#fff7df')}{node('find unknown c','#efedff')}</div></div>;
 }
 
-function PrototypePanel({icon,kicker,title,text}:{icon:React.ReactNode;kicker:string;title:string;text:string}){
-  return <section className="content-card" style={{minHeight:290,padding:28,display:'flex',flexDirection:'column',alignItems:'flex-start',justifyContent:'center',background:'#fbfcff'}}><div className="section-icon lavender" style={{marginBottom:15}}>{icon}</div><span className="content-kicker">{kicker}</span><h2 style={{fontSize:25,maxWidth:620}}>{title}</h2><p style={{maxWidth:650}}>{text}</p><div style={{marginTop:8,display:'flex',gap:8,alignItems:'center',fontSize:12,color:'#8a95aa'}}><TriangleAlert size={15}/> Prototype structure only — final bank comes later.</div></section>;
+function StudyPanel({icon,kicker,title,text}:{icon:React.ReactNode;kicker:string;title:string;text:string}){
+  return <section className="content-card" style={{minHeight:290,padding:28,display:'flex',flexDirection:'column',alignItems:'flex-start',justifyContent:'center',background:'#fbfcff'}}><div className="section-icon lavender" style={{marginBottom:15}}>{icon}</div><span className="content-kicker">{kicker}</span><h2 style={{fontSize:25,maxWidth:620}}>{title}</h2><p style={{maxWidth:650}}>{text}</p></section>;
 }
