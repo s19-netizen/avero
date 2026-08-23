@@ -27,9 +27,9 @@ export function TopicOverview({ topic }: { topic: Module2Topic }) {
 
         <div className="content-card" style={{display:'flex',flexDirection:'column',justifyContent:'space-between',padding:22}}>
           <div>
-            <span className="content-kicker">Topic map</span>
+            <span className="content-kicker">Topic sections</span>
             <strong style={{fontSize:30,display:'block',margin:'7px 0 2px'}}>{topic.subpoints.length}</strong>
-            <span style={{fontSize:12,color:'#7d899e'}}>specification sections</span>
+            <span style={{fontSize:12,color:'#7d899e'}}>sections to master</span>
           </div>
           <div style={{display:'grid',gap:8,marginTop:22}}>
             <div style={{display:'flex',gap:8,alignItems:'center',fontSize:12,color:'#5f6d87'}}><BookOpen size={16} color="#7567e8"/> Learn each idea separately</div>
@@ -64,14 +64,14 @@ export function TopicOverview({ topic }: { topic: Module2Topic }) {
 
         <aside style={{display:'grid',gap:14,position:'sticky',top:28}}>
           <div className="content-card" style={{padding:20}}>
-            <span className="content-kicker">How this works</span>
-            <h3 style={{margin:'6px 0 11px'}}>One topic, several lessons</h3>
-            <p style={{fontSize:12,marginBottom:0}}>This page is the topic overview. Each row opens one focused specification lesson with its own notes, examples, recall and practice.</p>
+            <span className="content-kicker">How to study this topic</span>
+            <h3 style={{margin:'6px 0 11px'}}>One topic, several focused lessons</h3>
+            <p style={{fontSize:12,marginBottom:0}}>Open a section to learn the idea, review it, practise it and apply it to exam-style questions before moving on.</p>
           </div>
           <div className="content-card" style={{padding:20,background:'#f1fbf8'}}>
             <CheckCircle2 size={20} color="#3b9683"/>
-            <strong style={{display:'block',fontSize:13,margin:'9px 0 4px'}}>Mastery builds underneath the topic</strong>
-            <p style={{fontSize:12,margin:0}}>Later, each section can carry its own score. The parent topic score can then be calculated from those sections.</p>
+            <strong style={{display:'block',fontSize:13,margin:'9px 0 4px'}}>Build mastery section by section</strong>
+            <p style={{fontSize:12,margin:0}}>Secure the individual sections and your overall topic mastery will rise with them.</p>
           </div>
           <Link href="/chemistry/ocr-a" className="secondary-button" style={{width:'100%'}}><FlaskConical size={16}/> Full specification</Link>
         </aside>
